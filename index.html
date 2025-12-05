@@ -1,0 +1,151 @@
+    <!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Анкета абітурієнта</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        fieldset {
+            border: 1px solid #bbb;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        legend {
+            padding: 0 10px;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        input, select, textarea {
+            width: 100%;
+            margin-top: 5px;
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+        .inline {
+            width: auto;
+            margin-right: 10px;
+        }
+        .range-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background: #0077ff;
+            color: white;
+        }
+        button[type="reset"] {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Анкета абітурієнта</h1>
+
+<form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+
+    <input type="hidden" name="source" value="Google Ads">
+
+    <!-- Блок 1 -->
+    <fieldset>
+        <legend>Особисті дані</legend>
+
+        <label for="name">ПІБ:</label>
+        <input type="text" id="name" name="full_name" placeholder="Прізвище Ім'я По батькові" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+
+        <label for="phone">Номер телефону:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+380..." required>
+
+        <label for="birth">Дата народження:</label>
+        <input type="date" id="birth" name="birthdate" required>
+
+        <label for="pass1">Пароль:</label>
+        <input type="password" id="pass1" name="password" placeholder="Введіть пароль" required>
+
+        <label for="pass2">Підтвердження пароля:</label>
+        <input type="password" id="pass2" name="password_confirm" placeholder="Повторіть пароль" required>
+    </fieldset>
+
+    <!-- Блок 2 -->
+    <fieldset>
+        <legend>Інформація про навчання</legend>
+
+        <label>Оберіть рівень знань програмування:</label>
+        <label><input class="inline" type="radio" name="level" value="beginner" required> Початковий</label>
+        <label><input class="inline" type="radio" name="level" value="middle"> Середній</label>
+        <label><input class="inline" type="radio" name="level" value="advanced"> Просунутий</label>
+
+        <label>Які мови програмування ви вже вивчали:</label>
+        <label><input class="inline" type="checkbox" name="known_langs" value="Python"> Python</label>
+        <label><input class="inline" type="checkbox" name="known_langs" value="JavaScript"> JavaScript</label>
+        <label><input class="inline" type="checkbox" name="known_langs" value="C++"> C++</label>
+        <label><input class="inline" type="checkbox" name="known_langs" value="Java"> Java</label>
+
+        <label for="course">Курс, на який хочете записатись:</label>
+        <select id="course" name="course" required>
+            <optgroup label="Для початківців">
+                <option value="basic_python">Основи Python</option>
+                <option value="web_start">Web для початківців</option>
+            </optgroup>
+            <optgroup label="Просунуті курси">
+                <option value="frontend">Frontend Pro</option>
+                <option value="backend">Backend Python</option>
+            </optgroup>
+        </select>
+
+        <label for="file">Завантажити фото або скан паспорта:</label>
+        <input type="file" id="file" name="document" accept="image/*,.pdf">
+
+        <label for="online">Чи готові навчатись онлайн?</label>
+        <div class="range-box">
+            <input type="range" id="online" name="online_ready" min="0" max="10" value="5" 
+                   oninput="document.getElementById('online_output').value = this.value">
+            <output id="online_output">5</output>
+        </div>
+
+        <label for="comment">Додаткові побажання:</label>
+        <textarea id="comment" name="comments" rows="4" placeholder="Ваші побажання..."></textarea>
+    </fieldset>
+
+    <button type="submit">Надіслати заявку</button>
+    <button type="reset">Очистити форму</button>
+
+</form>
+
+</body>
+</html>
+
